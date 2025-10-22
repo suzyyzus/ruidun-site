@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="湖北中辐新材料有限公司 - 专业提供医用轻质核辐射防护装备，致力于创新材料科技">
+    <meta name="keywords" content="核辐射防护, 医用防护服, 新材料科技, 湖北中辐">
+    <meta name="author" content="湖北中辐新材料有限公司">
+    <title>安全防护 - 专业防护服供应商</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36BFFA',
+                        success: '#00B42A',
+                        warning: '#FF7D00',
+                        danger: '#F53F3F',
+                        dark: '#1D2129',
+                        light: '#F2F3F5'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .product-card-shadow {
+                box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+            }
+            .product-card-shadow:hover {
+                box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.2);
+            }
+            .btn-pulse {
+                animation: pulse 2s infinite;
+            }
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                    box-shadow: 0 0 0 0 rgba(22, 93, 255, 0.7);
+                }
+                70% {
+                    transform: scale(1.05);
+                    box-shadow: 0 0 0 10px rgba(22, 93, 255, 0);
+                }
+                100% {
+                    transform: scale(1);
+                    box-shadow: 0 0 0 0 rgba(22, 93, 255, 0);
+                }
+            }
+        }
+    </style>
+    
+    
+    <style>
+        /* Enhanced mobile styles */
+        body {
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        .carousel {
+            touch-action: pan-y; /* Allow vertical scrolling on touch devices */
+        }
+        .carousel-slide {
+            background-size: cover;
+            background-position: center;
+        }
+        /* Adjust navigation arrows for mobile */
+        .carousel button {
+            padding: 1rem;
+            font-size: 1.2rem;
+        }
+        /* Adjust carousel dots for touch */
+        .carousel-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            margin: 0 0.5rem;
+        }
+        /* Ensure mobile menu is hidden by default */
+        .mobile-menu {
+            display: none;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        /* Adjust font sizes for smaller screens */
+        @media (max-width: 640px) {
+            .carousel-slide h1 {
+                font-size: clamp(1.5rem, 6vw, 2rem) !important;
+            }
+            .carousel-slide p {
+                font-size: clamp(0.875rem, 2vw, 1rem) !important;
+                max-width: 90%;
+            }
+            .carousel-slide a {
+                padding: 0.5rem 1.5rem;
+                font-size: 0.875rem;
+            }
+            .carousel button {
+                padding: 0.75rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- 保留主页的 header -->
+        <header class="bg-white header-shadow sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto pl-2 pr-4 py-10 w-full flex justify-between items-center">
+            <div class="flex items-center justify-start">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800">湖北中辐<span class="text-blue-500">新材料</span></h1>
+            </div>
+            <nav class="hidden md:flex space-x-10">
+                <a href="#products" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">防护产品</a>
+                <a href="#features" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">产品特点</a>
+                <a href="#about" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">关于我们</a>
+                <a href="custom-order.html" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">定制订单</a>
+                <a href="science.html" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">辐射科普</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="menuBtn" class="text-gray-600 hover:text-blue-500 focus:outline-none">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobileMenu" class="mobile-menu md:hidden bg-white border-t">
+            <div class="container mx-auto px-6 py-4 max-w-7xl flex flex-col space-y-3">
+                <a href="#products" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">防护产品</a>
+                <a href="#features" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">产品特点</a>
+                <a href="#about" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">关于我们</a>
+                <a href="custom-order.html" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">定制订单</a>
+                <a href="science.html" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">辐射科普</a>
+            </div>
+        </div>
+    </header>
+    <style>
+        .header-shadow {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    
+    <!-- 移动端菜单交互脚本 -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
+    
+
+    <!-- 博客区域 -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 md:px-6 max-w-7xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12 animate-slide-up">辐射科普</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 示例博客文章 -->
+                <article class="bg-white rounded-lg product-card-shadow p-6 transition-all animate-slide-up-delayed">
+                    <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-2">《自然》子刊论文: 每多做一次CT血液恶性肿瘤风险高43%</h3>
+                    <p class="text-sm text-gray-500 mb-4">发布日期：2025年9月9日</p>
+                    <p class="text-gray-600 mb-6">一项发表在《自然》子刊的最新研究表明，CT扫描可能增加血液恶性肿瘤风险，每增加一次CT扫描，风险升高约43%。本文将深入探讨研究细节、辐射防护的重要性以及如何安全使用医疗影像技术。</p>
+                    <a href="blog-ct-risk.html" class="inline-block text-blue-500 font-semibold hover:text-blue-700 transition-colors">阅读更多 <i class="fa fa-arrow-right ml-2"></i></a>
+                </article>
+                <!-- 可添加更多博客文章 -->
+                <!-- <article class="bg-white rounded-lg product-card-shadow p-6 transition-all animate-slide-up-delayed">
+                    <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-2">标题：辐射防护的最新技术</h3>
+                    <p class="text-sm text-gray-500 mb-4">发布日期：2025年10月1日</p>
+                    <p class="text-gray-600 mb-6">介绍最新的辐射防护材料和技术，如何在医疗和工业领域降低辐射风险。</p>
+                    <a href="#blog-2" class="inline-block text-blue-500 font-semibold hover:text-blue-700 transition-colors">阅读更多 <i class="fa fa-arrow-right ml-2"></i></a>
+                </article> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚（可选，参考 INFAB 风格） -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 湖北中辐新材料有限公司. 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

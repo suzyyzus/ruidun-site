@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="定制高质量医用轻质核辐射防护服，满足医疗和工业需求">
+    <meta name="keywords" content="核辐射防护, 医用防护服, 轻质防护装备, 辐射安全">
+    <meta name="author" content="湖北中辐新材料有限公司">
+    <title>定制您的核辐射防护服</title>
+    <link rel="icon" type="image/png" href="static/images/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36BFFA',
+                        success: '#00B42A',
+                        warning: '#FF7D00',
+                        danger: '#F53F3F',
+                        dark: '#1D2129',
+                        light: '#F2F3F5',
+                        'sky-blue': '#0166C0',
+                        'dark-purple': '#7C1F66',
+                        'camouflage': '#4B5320'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .product-card-shadow {
+                box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+            }
+            .product-card-shadow:hover {
+                box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        /* Header styling */
+        .header {
+            background: linear-gradient(135deg, theme('colors.primary') 0%, theme('colors.secondary') 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .header-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.02em;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .nav-menu {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.75rem;
+            margin: 0 auto;
+        }
+        .nav-link {
+            color: theme('colors.light');
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: theme('colors.secondary');
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .hamburger svg {
+            stroke: white;
+            transition: transform 0.3s ease;
+        }
+        .hamburger.active svg {
+            transform: rotate(90deg);
+        }
+
+        /* Progress step styling */
+        .progress-step {
+            background-color: theme('colors.gray.300');
+            color: theme('colors.gray.600');
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .progress-step.active {
+            background-color: theme('colors.secondary');
+            box-shadow: 0 0 10px rgba(54, 191, 250, 0.5);
+            color: white;
+        }
+
+        /* Form and card styling */
+        .form-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-card:hover {
+            transform: translateY(-5px);
+            @apply product-card-shadow;
+        }
+        .faq-item {
+            transition: max-height 0.3s ease;
+            @apply product-card-shadow;
+        }
+        .faq-item:hover {
+            @apply product-card-shadow;
+        }
+
+        /* Slider styling */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.3s ease;
+            width: 400%;
+        }
+        .slider img {
+            width: 25%;
+            object-fit: contain;
+            flex-shrink: 0;
+            cursor: zoom-in;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            transition: background-color 0.3s ease;
+        }
+        .slider-btn:hover {
+            background: theme('colors.primary');
+        }
+        .slider-btn.prev {
+            left: 0.5rem;
+        }
+        .slider-btn.next {
+            right: 0.5rem;
+        }
+        .slider-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .indicator {
+            width: 8px;
+            height: 8px;
+            background: theme('colors.gray.300');
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .indicator.active {
+            background: theme('colors.secondary');
+        }
+        .magnifier-lens {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid theme('colors.primary');
+            background-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            pointer-events: none;
+            display: none;
+            z-index: 100;
+            background-repeat: no-repeat;
+            background-size: 400%;
+        }
+
+        /* Color selection styling */
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        .color-option.selected {
+            border-color: theme('colors.primary');
+        }
+        .color-swatch {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            border-radius: 0.25rem;
+            border: 1px solid theme('colors.gray.300');
+            object-fit: contain;
+        }
+
+        /* Mobile-specific navigation */
+        @media (max-width: 640px) {
+            .nav-menu {
+                display: none;
+                background: theme('colors.primary');
+                border-radius: 0;
+                padding: 1rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0.75rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-link {
+                padding: 0.75rem;
+                text-align: center;
+                font-size: 1.125rem;
+            }
+            .hamburger {
+                display: block;
+            }
+            .header-title {
+                font-size: 1.5rem;
+            }
+            .magnifier-lens {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light font-sans">
+    <!-- Header Section -->
+    <header class="bg-white header-shadow sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto pl-2 pr-4 py-10 w-full flex justify-between items-center">
+            <div class="flex items-center justify-start">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800">湖北中辐<span class="text-blue-500">新材料</span></h1>
+            </div>
+            <nav class="hidden md:flex space-x-10">
+                <a href="#products" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">防护产品</a>
+                <a href="#features" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">产品特点</a>
+                <a href="#about" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">关于我们</a>
+                <a href="custom-order.html" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">定制订单</a>
+                <a href="science.html" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">辐射科普</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="menuBtn" class="text-gray-600 hover:text-blue-500 focus:outline-none">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobileMenu" class="mobile-menu md:hidden bg-white border-t">
+            <div class="container mx-auto px-6 py-4 max-w-7xl flex flex-col space-y-3">
+                <a href="#products" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">防护产品</a>
+                <a href="#features" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">产品特点</a>
+                <a href="#about" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">关于我们</a>
+                <a href="custom-order.html" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">定制订单</a>
+                <a href="science.html" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">辐射科普</a>
+            </div>
+        </div>
+    </header>
+    <style>
+        .header-shadow {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    
+    <!-- 移动端菜单交互脚本 -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+    </script>    
+    
+    
+    
+    
+    
+    
+      <!-- Order Progress Tracker -->
+    <section class="py-6 sm:py-8 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6 text-dark">订单进度</h2>
+            <div class="flex justify-center space-x-2 sm:space-x-4 overflow-x-auto">
+                <div id="step-1" class="progress-step active text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-sm sm:text-base">1</div>
+                <div id="step-2" class="progress-step bg-gray-300 text-gray-600 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-sm sm:text-base">2</div>
+                <div id="step-3" class="progress-step bg-gray-300 text-gray-600 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-sm sm:text-base">3</div>
+                <div id="step-4" class="progress-step bg-gray-300 text-gray-600 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-sm sm:text-base">4</div>
+            </div>
+            <div class="flex justify-center space-x-2 sm:space-x-4 text-xs sm:text-sm mt-2 flex-wrap text-dark">
+                <span class="px-1">填写信息</span>
+                <span class="px-1">确认订单</span>
+                <span class="px-1">生产定制</span>
+                <span class="px-1">交付</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Custom Order Form Section -->
+    <section class="py-8 sm:py-12 bg-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 text-dark">定制您的防护服</h2>
+            <p class="text-center text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">请按照以下步骤定制您的核辐射防护服，我们将尽快与您联系确认订单详情。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                <!-- Form Steps -->
+                <div class="form-card bg-white rounded-lg p-4 sm:p-6 product-card-shadow">
+                    <!-- Step 1: Fill Information -->
+                    <div id="form-step-1" class="form-step">
+                        <h3 class="text-base sm:text-lg font-semibold mb-4 text-dark">步骤 1: 填写信息</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 font-semibold text-sm sm:text-base">客户名称</label>
+                                <input id="customer-name" type="text" placeholder="请输入您的姓名" class="w-full p-3 border rounded text-sm sm:text-base border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold text-sm sm:text-base">联系电话</label>
+                                <input id="customer-phone" type="tel" placeholder="请输入您的电话号码" class="w-full p-3 border rounded text-sm sm:text-base border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold text-sm sm:text-base">定制日期</label>
+                                <input id="order-date" type="date" class="w-full p-3 border rounded text-sm sm:text-base border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold text-sm sm:text-base">交货日期</label>
+                                <input id="delivery-date" type="date" class="w-full p-3 border rounded text-sm sm:text-base border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold text-sm sm:text-base">款式选择</label>
+                                <select id="style-select" class="w-full p-3 border rounded text-sm sm:text-base border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" onchange="updatePreview()">
+                                    <option value="">请选择防护服款式</option>
+                                    <option value="分体有袖">分体有袖</option>
+                                    <option value="分体无袖">分体无袖</option>
+                                    <option value="连体有袖">连体有袖</option>
+                                    <option value="连体无袖">连体无袖</option>
+                                    <option value="背心式仅前片">背心式仅前片</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold text-sm sm:text-base">颜色选择</label>
+                                <select id="color-select" class="w-full p-3 border rounded text-sm sm:text-base border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" onchange="selectColor(this.value)">
+                                    <option value="">请选择颜色</option>
+                                    <option value="sky-blue">天蓝色</option>
+                                    <option value="dark-purple">黛紫色</option>
+                                    <option value="camouflage">迷彩色</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 mt-3">
+                                <!-- 天蓝色预览 -->
+                                <div class="color-preview-item cursor-pointer transition-all duration-300 hover:shadow-lg rounded-lg overflow-hidden border-2 border-transparent hover:border-primary" 
+                                     data-color="sky-blue" onclick="selectColor('sky-blue')">
+                                    <img src="static/images/1_.jpg" alt="天蓝色防护服预览" class="w-full h-24 object-cover">
+                                    <div class="text-center py-2 text-sm font-medium">天蓝色</div>
+                                </div>
+                                <!-- 黛紫色预览 -->
+                                <div class="color-preview-item cursor-pointer transition-all duration-300 hover:shadow-lg rounded-lg overflow-hidden border-2 border-transparent hover:border-primary" 
+                                     data-color="dark-purple" onclick="selectColor('dark-purple')">
+                                    <img src="static/images/2_.jpg" alt="黛紫色防护服预览" class="w-full h-24 object-cover">
+                                    <div class="text-center py-2 text-sm font-medium">黛紫色</div>
+                                </div>
+                                <!-- 迷彩色预览 -->
+                                <div class="color-preview-item cursor-pointer transition-all duration-300 hover:shadow-lg rounded-lg overflow-hidden border-2 border-transparent hover:border-primary" 
+                                     data-color="camouflage" onclick="selectColor('camouflage')">
+                                    <img src="static/images/3_.jpg" alt="迷彩色防护服预览" class="w-full h-24 object-cover">
+                                    <div class="text-center py-2 text-sm font-medium">迷彩色</div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold text-sm sm:text-base">特殊要求</label>
+                                <textarea id="requirements" placeholder="请输入您的特殊要求（如额外防护层等）" class="w-full p-3 border rounded h-24 text-sm sm:text-base border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50"></textarea>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="bg-primary text-white py-3 px-6 rounded hover:bg-blue-700 text-sm sm:text-base transition-colors duration-300" onclick="nextStep(1)">下一步</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 2: Confirm Order -->
+                    <div id="form-step-2" class="form-step hidden">
+                        <h3 class="text-base sm:text-lg font-semibold mb-4 text-dark">步骤 2: 确认订单</h3>
+                        <div id="order-summary" class="text-gray-600 mb-4 text-sm sm:text-base">
+                            <p>客户名称: <span id="summary-name">未填写</span></p>
+                            <p>联系电话: <span id="summary-phone">未填写</span></p>
+                            <p>定制日期: <span id="summary-order-date">未填写</span></p>
+                            <p>交货日期: <span id="summary-delivery-date">未填写</span></p>
+                            <p>款式: <span id="summary-style">未选择</span></p>
+                            <p>颜色: <span id="summary-color">未选择</span></p>
+                            <p>特殊要求: <span id="summary-requirements">无</span></p>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="bg-gray-400 text-white py-3 px-6 rounded hover:bg-gray-500 text-sm sm:text-base transition-colors duration-300" onclick="prevStep(2)">上一步</button>
+                            <button class="bg-primary text-white py-3 px-6 rounded hover:bg-blue-700 text-sm sm:text-base transition-colors duration-300" onclick="nextStep(2)">提交订单</button>
+                        </div>
+                    </div>
+                    <!-- Step 3: Production -->
+                    <div id="form-step-3" class="form-step hidden">
+                        <h3 class="text-base sm:text-lg font-semibold mb-4 text-dark">步骤 3: 生产定制</h3>
+                        <p class="text-gray-600 mb-4 text-sm sm:text-base">您的订单已提交！我们正在根据您的需求进行生产定制，通常需要2-4周。我们的团队会与您保持联系，更新生产进度。</p>
+                        <div class="flex justify-between">
+                            <button class="bg-gray-400 text-white py-3 px-6 rounded hover:bg-gray-500 text-sm sm:text-base transition-colors duration-300" onclick="prevStep(3)">上一步</button>
+                            <button class="bg-primary text-white py-3 px-6 rounded hover:bg-blue-700 text-sm sm:text-base transition-colors duration-300" onclick="nextStep(3)">查看交付详情</button>
+                        </div>
+                    </div>
+                    <!-- Step 4: Delivery -->
+                    <div id="form-step-4" class="form-step hidden">
+                        <h3 class="text-base sm:text-lg font-semibold mb-4 text-dark">步骤 4: 交付</h3>
+                        <p class="text-gray-600 mb-4 text-sm sm:text-base">您的定制防护服已完成生产！我们将安排物流配送，预计在您选择的交货日期前送达。请保持电话畅通以便物流联系。</p>
+                        <div class="flex justify-between">
+                            <button class="bg-gray-400 text-white py-3 px-6 rounded hover:bg-gray-500 text-sm sm:text-base transition-colors duration-300" onclick="prevStep(4)">上一步</button>
+                            <button class="bg-success text-white py-3 px-6 rounded hover:bg-green-700 text-sm sm:text-base transition-colors duration-300" onclick="completeOrder()">完成订单</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Style Preview -->
+                <div class="form-card bg-white rounded-lg p-4 sm:p-6 product-card-shadow">
+                    <h3 class="text-base sm:text-lg font-semibold mb-4 text-dark">款式预览</h3>
+                    <div class="slider-container">
+                        <div class="slider" id="preview-slider">
+                            <img src="static/images/c_front.jpg" alt="款式预览" class="preview-image">
+                        </div>
+                        <div class="magnifier-lens" id="magnifier-lens"></div>
+                        <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                        <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
+                        <div class="slider-indicators">
+                            <span class="indicator active" onclick="setSlide(0)"></span>
+                            <span class="indicator" onclick="setSlide(1)"></span>
+                            <span class="indicator" onclick="setSlide(2)"></span>
+                            <span class="indicator" onclick="setSlide(3)"></span>
+                        </div>
+                    </div>
+                    <p class="text-center text-gray-600 text-sm mt-2" id="view-label">前视图</p>
+                    <div class="flex justify-center mt-2">
+                        <button id="back-to-style" class="bg-gray-400 text-white py-2 px-4 rounded hover:bg-gray-500 text-sm sm:text-base transition-colors duration-300 hidden" onclick="backToStyle()">返回款式预览</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FAQ Section -->
+    <section class="py-8 sm:py-12 bg-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 text-dark">常见问题解答</h2>
+            <div class="space-y-4">
+                <div class="faq-item bg-white rounded-lg p-4 sm:p-6 product-card-shadow">
+                    <h3 class="text-base sm:text-lg font-semibold cursor-pointer text-dark" onclick="toggleFAQ(this)">定制防护服需要多长时间？</h3>
+                    <p class="text-gray-600 hidden text-sm sm:text-base">通常定制周期为2-4周，具体取决于订单复杂度和生产安排。我们会在确认订单后提供准确的交货时间。</p>
+                </div>
+                <div class="faq-item bg-white rounded-lg p-4 sm:p-6 product-card-shadow">
+                    <h3 class="text-base sm:text-lg font-semibold cursor-pointer text-dark" onclick="toggleFAQ(this)">可以指定防护服的颜色吗？</h3>
+                    <p class="text-gray-600 hidden text-sm sm:text-base">是的，我们支持多种颜色选择，您可以在颜色选择中选择天蓝色、黛紫色或迷彩色，也可在特殊要求中注明其他偏好颜色。</p>
+                </div>
+                <div class="faq-item bg-white rounded-lg p-4 sm:p-6 product-card-shadow">
+                    <h3 class="text-base sm:text-lg font-semibold cursor-pointer text-dark" onclick="toggleFAQ(this)">防护服的防护性能如何测试？</h3>
+                    <p class="text-gray-600 hidden text-sm sm:text-base">所有防护服均通过国家及国际标准测试，确保99.9%的射线屏蔽效率，符合医疗和工业标准。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm sm:text-base">&copy; 2025 湖北中辐新材料有限公司. 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        let currentSlide = 0;
+        let selectedColor = '';
+        let isColorSwatch = false;
+        const styleImages = {
+            '分体有袖': {
+                'sky-blue': [
+                    { src: 'static/images/a_front.jpg', label: '前视图' },
+                    { src: 'static/images/a_back.jpg', label: '后视图' },
+                    { src: 'static/images/a_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/a_right.jpg', label: '右侧视图' }
+                ],
+                'dark-purple': [
+                    { src: 'static/images/a_front.jpg', label: '前视图' },
+                    { src: 'static/images/a_back.jpg', label: '后视图' },
+                    { src: 'static/images/a_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/a_right.jpg', label: '右侧视图' }
+                ],
+                'camouflage': [
+                    { src: 'static/images/a_front.jpg', label: '前视图' },
+                    { src: 'static/images/a_back.jpg', label: '后视图' },
+                    { src: 'static/images/a_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/a_right.jpg', label: '右侧视图' }
+                ]
+            },
+            '分体无袖': {
+                'sky-blue': [
+                    { src: 'static/images/b_front.jpg', label: '前视图' },
+                    { src: 'static/images/b_back.jpg', label: '后视图' },
+                    { src: 'static/images/b_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/b_right.jpg', label: '右侧视图' }
+                ],
+                'dark-purple': [
+                    { src: 'static/images/b_front.jpg', label: '前视图' },
+                    { src: 'static/images/b_back.jpg', label: '后视图' },
+                    { src: 'static/images/b_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/b_right.jpg', label: '右侧视图' }
+                ],
+                'camouflage': [
+                    { src: 'static/images/b_front.jpg', label: '前视图' },
+                    { src: 'static/images/b_back.jpg', label: '后视图' },
+                    { src: 'static/images/b_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/b_right.jpg', label: '右侧视图' }
+                ]
+            },
+            '连体有袖': {
+                'sky-blue': [
+                    { src: 'static/images/c_front.jpg', label: '前视图' },
+                    { src: 'static/images/c_back.jpg', label: '后视图' },
+                    { src: 'static/images/c_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/c_right.jpg', label: '右侧视图' }
+                ],
+                'dark-purple': [
+                    { src: 'static/images/c_front.jpg', label: '前视图' },
+                    { src: 'static/images/c_back.jpg', label: '后视图' },
+                    { src: 'static/images/c_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/c_right.jpg', label: '右侧视图' }
+                ],
+                'camouflage': [
+                    { src: 'static/images/c_front.jpg', label: '前视图' },
+                    { src: 'static/images/c_back.jpg', label: '后视图' },
+                    { src: 'static/images/c_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/c_right.jpg', label: '右侧视图' }
+                ]
+            },
+            '连体无袖': {
+                'sky-blue': [
+                    { src: 'static/images/d_front.jpg', label: '前视图' },
+                    { src: 'static/images/d_back.jpg', label: '后视图' },
+                    { src: 'static/images/d_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/d_right.jpg', label: '右侧视图' }
+                ],
+                'dark-purple': [
+                    { src: 'static/images/d_front.jpg', label: '前视图' },
+                    { src: 'static/images/d_back.jpg', label: '后视图' },
+                    { src: 'static/images/d_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/d_right.jpg', label: '右侧视图' }
+                ],
+                'camouflage': [
+                    { src: 'static/images/d_front.jpg', label: '前视图' },
+                    { src: 'static/images/d_back.jpg', label: '后视图' },
+                    { src: 'static/images/d_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/d_right.jpg', label: '右侧视图' }
+                ]
+            },
+            '背心式仅前片': {
+                'sky-blue': [
+                    { src: 'static/images/e_front.jpg', label: '前视图' },
+                    { src: 'static/images/e_back.jpg', label: '后视图' },
+                    { src: 'static/images/e_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/e_right.jpg', label: '右侧视图' }
+                ],
+                'dark-purple': [
+                    { src: 'static/images/e_front.jpg', label: '前视图' },
+                    { src: 'static/images/e_back.jpg', label: '后视图' },
+                    { src: 'static/images/e_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/e_right.jpg', label: '右侧视图' }
+                ],
+                'camouflage': [
+                    { src: 'static/images/e_front.jpg', label: '前视图' },
+                    { src: 'static/images/e_back.jpg', label: '后视图' },
+                    { src: 'static/images/e_left.jpg', label: '左侧视图' },
+                    { src: 'static/images/e_right.jpg', label: '右侧视图' }
+                ]
+            }
+        };
+
+        const colorSwatches = {
+            'sky-blue': { src: 'static/images/1_.jpg', label: '天蓝色' },
+            'dark-purple': { src: 'static/images/2_.jpg', label: '黛紫色' },
+            'camouflage': { src: 'static/images/3_.jpg', label: '迷彩色' }
+        };
+
+        function toggleNav() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        function selectColor(color) {
+            selectedColor = color;
+            document.getElementById('color-select').value = color;
+            document.getElementById('summary-color').textContent = color === 'sky-blue' ? '天蓝色' : color === 'dark-purple' ? '黛紫色' : '迷彩色';
+            isColorSwatch = false;
+            document.querySelector('.slider-btn.prev').style.display = 'block';
+            document.querySelector('.slider-btn.next').style.display = 'block';
+            document.getElementById('back-to-style').classList.add('hidden');
+            updatePreview();
+        }
+
+        function showColorSwatch(color) {
+            isColorSwatch = true;
+            const slider = document.getElementById('preview-slider');
+            const viewLabel = document.getElementById('view-label');
+            const swatch = colorSwatches[color];
+            slider.innerHTML = `<img src="${swatch.src}" alt="颜色预览 - ${swatch.label}" class="color-swatch">`;
+            slider.style.transform = `translateX(0%)`;
+            viewLabel.textContent = `颜色预览: ${swatch.label}`;
+            document.querySelectorAll('.indicator').forEach(ind => ind.classList.remove('active'));
+            document.querySelector('.slider-btn.prev').style.display = 'none';
+            document.querySelector('.slider-btn.next').style.display = 'none';
+            document.getElementById('magnifier-lens').style.display = 'none';
+            document.getElementById('back-to-style').classList.remove('hidden');
+        }
+
+        function backToStyle() {
+            isColorSwatch = false;
+            updatePreview();
+        }
+
+        function updatePreview() {
+            if (isColorSwatch) return;
+            const styleSelect = document.getElementById('style-select').value || '连体有袖';
+            const slider = document.getElementById('preview-slider');
+            const viewLabel = document.getElementById('view-label');
+            const color = selectedColor || 'sky-blue';
+            const images = styleImages[styleSelect]?.[color] || [
+                { src: 'static/images/c_front.jpg', label: '前视图' }
+            ];
+
+            currentSlide = 0;
+            slider.innerHTML = '<p class="text-center text-gray-600">加载中...</p>';
+            slider.innerHTML = images.map((img, index) => {
+                const image = new Image();
+                image.src = img.src;
+                image.onerror = () => {
+                    console.error(`Failed to load image: ${img.src}`);
+                    image.src = 'static/images/placeholder.jpg';
+                };
+                return `<img src="${img.src}" alt="款式预览 - ${img.label}" class="preview-image">`;
+            }).join('');
+            slider.style.transform = `translateX(0%)`;
+            viewLabel.textContent = images[currentSlide].label;
+            document.querySelectorAll('.indicator').forEach((ind, i) => {
+                ind.classList.toggle('active', i === currentSlide);
+            });
+            document.querySelector('.slider-btn.prev').style.display = 'block';
+            document.querySelector('.slider-btn.next').style.display = 'block';
+            document.getElementById('summary-style').textContent = styleSelect || '未选择';
+            document.getElementById('summary-color').textContent = color === 'sky-blue' ? '天蓝色' : color === 'dark-purple' ? '黛紫色' : color === 'camouflage' ? '迷彩色' : '未选择';
+            document.getElementById('back-to-style').classList.add('hidden');
+            initMagnifier();
+        }
+
+        function moveSlide(direction) {
+            if (isColorSwatch) return;
+            const styleSelect = document.getElementById('style-select').value;
+            const slider = document.getElementById('preview-slider');
+            const viewLabel = document.getElementById('view-label');
+            const color = selectedColor || 'sky-blue';
+            const images = styleImages[styleSelect]?.[color] || [
+                { src: 'static/images/c_front.jpg', label: '前视图' }
+            ];
+
+            currentSlide = (currentSlide + direction + images.length) % images.length;
+            slider.style.transform = `translateX(-${currentSlide * 25}%)`;
+            viewLabel.textContent = images[currentSlide].label;
+            document.querySelectorAll('.indicator').forEach((ind, i) => {
+                ind.classList.toggle('active', i === currentSlide);
+            });
+            initMagnifier();
+        }
+
+        function setSlide(index) {
+            if (isColorSwatch) return;
+            const styleSelect = document.getElementById('style-select').value;
+            const slider = document.getElementById('preview-slider');
+            const viewLabel = document.getElementById('view-label');
+            const color = selectedColor || 'sky-blue';
+            const images = styleImages[styleSelect]?.[color] || [
+                { src: 'static/images/c_front.jpg', label: '前视图' }
+            ];
+
+            currentSlide = index % images.length;
+            slider.style.transform = `translateX(-${currentSlide * 25}%)`;
+            viewLabel.textContent = images[currentSlide].label;
+            document.querySelectorAll('.indicator').forEach((ind, i) => {
+                ind.classList.toggle('active', i === currentSlide);
+            });
+            initMagnifier();
+        }
+
+        function initMagnifier() {
+            if (isColorSwatch) return;
+            const slider = document.getElementById('preview-slider');
+            const lens = document.getElementById('magnifier-lens');
+            const images = slider.querySelectorAll('.preview-image');
+            const currentImage = images[currentSlide];
+
+            if (!currentImage) return;
+
+            images.forEach(img => {
+                img.removeEventListener('mousemove', handleMouseMove);
+                img.removeEventListener('mouseenter', handleMouseEnter);
+                img.removeEventListener('mouseleave', handleMouseLeave);
+            });
+
+            currentImage.addEventListener('mousemove', handleMouseMove);
+            currentImage.addEventListener('mouseenter', handleMouseEnter);
+            currentImage.addEventListener('mouseleave', handleMouseLeave);
+
+            function handleMouseEnter() {
+                lens.style.display = 'block';
+                lens.style.backgroundImage = `url('${currentImage.src}')`;
+            }
+
+            function handleMouseLeave() {
+                lens.style.display = 'none';
+            }
+
+            function handleMouseMove(e) {
+                const rect = currentImage.getBoundingClientRect();
+                const lensSize = 120;
+                const zoom = 4;
+
+                let x = e.clientX - rect.left;
+                let y = e.clientY - rect.top;
+
+                x = Math.max(lensSize / 2, Math.min(x, rect.width - lensSize / 2));
+                y = Math.max(lensSize / 2, Math.min(y, rect.height - lensSize / 2));
+
+                lens.style.left = `${x - lensSize / 2}px`;
+                lens.style.top = `${y - lensSize / 2}px`;
+
+                const bgX = ((x / rect.width) * 100) * zoom - 50;
+                const bgY = ((y / rect.height) * 100) * zoom - 50;
+                lens.style.backgroundPosition = `${bgX}% ${bgY}%`;
+            }
+        }
+
+        function nextStep(step) {
+            if (step === 1) {
+                const name = document.getElementById('customer-name').value;
+                const phone = document.getElementById('customer-phone').value;
+                const orderDate = document.getElementById('order-date').value;
+                const deliveryDate = document.getElementById('delivery-date').value;
+                if (!name || !phone || !orderDate || !deliveryDate) {
+                    alert('请填写所有必填字段！');
+                    return;
+                }
+                document.getElementById('summary-name').textContent = name || '未填写';
+                document.getElementById('summary-phone').textContent = phone || '未填写';
+                document.getElementById('summary-order-date').textContent = orderDate || '未填写';
+                document.getElementById('summary-delivery-date').textContent = deliveryDate || '未填写';
+                document.getElementById('summary-style').textContent = document.getElementById('style-select').value || '未选择';
+                document.getElementById('summary-color').textContent = selectedColor ? (selectedColor === 'sky-blue' ? '天蓝色' : selectedColor === 'dark-purple' ? '黛紫色' : '迷彩色') : '未选择';
+                document.getElementById('summary-requirements').textContent = document.getElementById('requirements').value || '无';
+            }
+
+            document.getElementById(`step-${currentStep}`).classList.remove('active', 'text-white');
+            document.getElementById(`step-${currentStep}`).classList.add('bg-gray-300', 'text-gray-600');
+            currentStep = step + 1;
+            document.getElementById(`step-${currentStep}`).classList.add('active', 'text-white');
+            document.getElementById(`step-${currentStep}`).classList.remove('bg-gray-300', 'text-gray-600');
+
+            document.querySelectorAll('.form-step').forEach(step => step.classList.add('hidden'));
+            document.getElementById(`form-step-${currentStep}`).classList.remove('hidden');
+
+            if (step === 2) {
+                alert('订单已提交！我们将进入生产定制阶段。');
+            }
+        }
+
+        function prevStep(step) {
+            document.getElementById(`step-${currentStep}`).classList.remove('active', 'text-white');
+            document.getElementById(`step-${currentStep}`).classList.add('bg-gray-300', 'text-gray-600');
+            currentStep = step - 1;
+            document.getElementById(`step-${currentStep}`).classList.add('active', 'text-white');
+            document.getElementById(`step-${currentStep}`).classList.remove('bg-gray-300', 'text-gray-600');
+
+            document.querySelectorAll('.form-step').forEach(step => step.classList.add('hidden'));
+            document.getElementById(`form-step-${currentStep}`).classList.remove('hidden');
+        }
+
+        function completeOrder() {
+            alert('订单已完成！感谢您的信任，我们已安排交付。');
+            window.location.reload();
+        }
+
+        function toggleFAQ(element) {
+            const content = element.nextElementSibling;
+            content.classList.toggle('hidden');
+        }
+
+        window.onload = function() {
+            const images = Object.values(styleImages).flatMap(style => Object.values(style).flat());
+            images.forEach(img => {
+                const image = new Image();
+                image.src = img.src;
+                image.onerror = () => console.error(`Failed to load image: ${img.src}`);
+            });
+            Object.values(colorSwatches).forEach(swatch => {
+                const image = new Image();
+                image.src = swatch.src;
+                image.onerror = () => console.error(`Failed to load image: ${swatch.src}`);
+            });
+            selectColor('sky-blue');
+            updatePreview();
+        };
+    </script>
+</body>
+</html>

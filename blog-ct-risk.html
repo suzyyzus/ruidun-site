@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="湖北中辐新材料有限公司 - 专业提供医用轻质核辐射防护装备，致力于创新材料科技">
+    <meta name="keywords" content="核辐射防护, 医用防护服, 新材料科技, 湖北中辐">
+    <meta name="author" content="湖北中辐新材料有限公司">
+    <title>安全防护 - 专业防护服供应商</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36BFFA',
+                        success: '#00B42A',
+                        warning: '#FF7D00',
+                        danger: '#F53F3F',
+                        dark: '#1D2129',
+                        light: '#F2F3F5'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .product-card-shadow {
+                box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+            }
+            .product-card-shadow:hover {
+                box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.2);
+            }
+            .btn-pulse {
+                animation: pulse 2s infinite;
+            }
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                    box-shadow: 0 0 0 0 rgba(22, 93, 255, 0.7);
+                }
+                70% {
+                    transform: scale(1.05);
+                    box-shadow: 0 0 0 10px rgba(22, 93, 255, 0);
+                }
+                100% {
+                    transform: scale(1);
+                    box-shadow: 0 0 0 0 rgba(22, 93, 255, 0);
+                }
+            }
+        }
+    </style>
+    
+    
+    <style>
+        /* Enhanced mobile styles */
+        body {
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        .carousel {
+            touch-action: pan-y; /* Allow vertical scrolling on touch devices */
+        }
+        .carousel-slide {
+            background-size: cover;
+            background-position: center;
+        }
+        /* Adjust navigation arrows for mobile */
+        .carousel button {
+            padding: 1rem;
+            font-size: 1.2rem;
+        }
+        /* Adjust carousel dots for touch */
+        .carousel-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            margin: 0 0.5rem;
+        }
+        /* Ensure mobile menu is hidden by default */
+        .mobile-menu {
+            display: none;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        /* Adjust font sizes for smaller screens */
+        @media (max-width: 640px) {
+            .carousel-slide h1 {
+                font-size: clamp(1.5rem, 6vw, 2rem) !important;
+            }
+            .carousel-slide p {
+                font-size: clamp(0.875rem, 2vw, 1rem) !important;
+                max-width: 90%;
+            }
+            .carousel-slide a {
+                padding: 0.5rem 1.5rem;
+                font-size: 0.875rem;
+            }
+            .carousel button {
+                padding: 0.75rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header (Unchanged) -->
+    <header class="bg-white header-shadow sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto pl-2 pr-4 py-10 w-full flex justify-between items-center">
+            <div class="flex items-center justify-start">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800">湖北中辐<span class="text-blue-500">新材料</span></h1>
+            </div>
+            <nav class="hidden md:flex space-x-10">
+                <a href="#products" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">防护产品</a>
+                <a href="#features" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">产品特点</a>
+                <a href="#about" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">关于我们</a>
+                <a href="custom-order.html" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">定制订单</a>
+                <a href="science.html" class="text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">辐射科普</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="menuBtn" class="text-gray-600 hover:text-blue-500 focus:outline-none">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobileMenu" class="mobile-menu md:hidden bg-white border-t">
+            <div class="container mx-auto px-6 py-4 max-w-7xl flex flex-col space-y-3">
+                <a href="#products" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">防护产品</a>
+                <a href="#features" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">产品特点</a>
+                <a href="#about" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">关于我们</a>
+                <a href="custom-order.html" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">定制订单</a>
+                <a href="science.html" class="py-2 text-2xl text-gray-600 hover:text-blue-500 nav-link transition-colors">辐射科普</a>
+            </div>
+        </div>
+    </header>
+    <style>
+        .header-shadow {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    
+    <!-- 移动端菜单交互脚本 -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
+
+
+<main class="flex-grow container mx-auto px-4 py-12">
+    <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Left Sidebar -->
+        <aside class="w-full lg:w-80 bg-gradient-to-r from-blue-50 to-white p-4 md:p-6 rounded-xl shadow-xl border-l-4 border-blue-500">
+            <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-4 uppercase tracking-wide">导航</h3>
+            <div class="space-y-4 md:space-y-6">
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="text-lg md:text-xl font-medium text-gray-700 mb-2">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li class="hover:bg-blue-50 transition duration-200 rounded">
+                            <a href="#" class="text-blue-600 hover:text-blue-700 text-base md:text-lg font-medium before:content-['▸'] before:mr-2">首页</a>
+                        </li>
+                        <li class="hover:bg-blue-50 transition duration-200 rounded">
+                            <a href="#" class="text-blue-600 hover:text-blue-700 text-base md:text-lg font-medium before:content-['▸'] before:mr-2">科学新闻</a>
+                        </li>
+                        <li class="hover:bg-blue-50 transition duration-200 rounded">
+                            <a href="#" class="text-blue-600 hover:text-blue-700 text-base md:text-lg font-medium before:content-['▸'] before:mr-2">关于我们</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Newsletter Signup -->
+                <div>
+                    <h4 class="text-lg md:text-xl font-medium text-gray-700 mb-2">订阅资讯</h4>
+                    <p class="text-gray-600 text-sm md:text-base mb-3">获取最新的科学新闻和防护技术更新。</p>
+                    <a href="#" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">立即订阅</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Blog Content -->
+        <section class="flex-grow max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+            <div class="mb-6">
+                <img src="static/images/nature.png" alt="CT Radiation Study" class="w-full h-72 object-cover rounded-lg shadow-md md:h-80">
+                <p class="text-gray-600 text-base mt-3 text-center">《自然医学》发表CT辐射相关研究</p>
+            </div>
+        
+            <h2 class="text-4xl font-extrabold text-gray-900 mb-6 leading-tight">《自然医学》杂志：家长注意！儿童做需谨慎CT检查，血液恶性肿瘤风险显著升高</h2>
+            <p class="text-gray-600 mb-8 text-lg">发布日期：2025年9月9日 14:51 HKT</p>
+        
+            <div class="prose max-w-none prose-2xl prose-headings:font-semibold prose-headings:text-gray-800 custom-prose leading-loose text-2xl">
+                <p style="text-indent: 2em;">一项由国际癌症研究机构（IARC）协调的大型国际队列研究（EPI-CT）在《自然医学》（Nature Medicine）杂志上发表，揭示了儿童、青少年和年轻成人接受计算机断层扫描（CT）辐射暴露与血液恶性肿瘤风险之间的显著关联。该研究强调，低剂量辐射暴露可能带来的潜在健康隐患，并呼吁进一步优化儿科影像学实践，以平衡诊断益处与辐射风险。</p>
+        
+                <h3><strong>研究背景与方法</strong></h3>
+                <p style="text-indent: 2em;">CT扫描自20世纪70年代引入以来，在高收入国家迅速普及，每年欧洲约有超过<strong>100万名</strong>儿童接受CT检查。尽管其在患者管理中的益处无可争议，但中等至高剂量电离辐射已成为医学界关注的焦点。现有证据表明，中等剂量（≥<strong>100 mGy</strong>）辐射是血液恶性肿瘤（如白血病）的已知风险因素，但CT典型剂量水平（<strong><100 mGy</strong>）的风险仍不确定。</p>
+                <p style="text-indent: 2em;">给大家用大白话讲讲 EPI-CT 这项研究：这是一项由多个国家一起做的长期跟踪研究，找来了来自比利时、丹麦、法国、德国、荷兰、挪威、西班牙、瑞典和英国这9个欧洲国家的<strong>948,174人</strong>。这些人都曾在22岁之前做过CT检查。研究团队跟着他们观察了很长时间，把所有人的随访时长加起来，总共凑够了<strong>6,863,833人年</strong>（简单说，就是1个人随访10年是10人年，10个人随访1年也是10人年，这里是所有人的总随访时长）。为了算出每个人骨髓受到的辐射总量，研究人员考虑了CT扫描的部位、患者的年龄和性别、扫描的时间段，以及根据当时情况推测的CT设备技术参数。</p>
+                <p style="text-indent: 2em;">基于世界卫生组织（WHO）最新修订的血液和淋巴系统肿瘤分类标准，研究团队通过长期随访，最终在这些人中找到了 790 例血液恶性肿瘤病例。其中 578 例是淋巴系统恶性肿瘤，203 例是骨髓恶性肿瘤和急性白血病。从确诊年龄来看，51% 的患者确诊时不到 20 岁，88.5% 不到 30 岁，正是因为有足够长的随访时间，才能及时捕捉到这些年轻患者的发病情况。另外，在所有 CT 检查中，头颈部扫描占了 81%；而结合之前计算辐射时考虑的 “扫描时间段” 能发现，随着时间推移，CT 检查的整体辐射剂量都在降低，其中胸部等其他部位的剂量下降得比头颈部更明显。</p>
+        
+                <h3><strong>主要发现</strong></h3>
+                <p style="text-indent: 2em;">直接说研究分析出的关键结果：简单来讲，骨髓受到的CT辐射总量越多，患上血液恶性肿瘤的风险就越高。</p>
+                <p style="text-indent: 2em;">具体看数据：拿骨髓辐射量不到 5 毫希（mGy）的人作为参考，那些辐射量达到或超过 50 毫希的人，患血液恶性肿瘤的风险是参考组的 2.66 倍。如果按每 100 毫希来算，风险会额外增加 1.96 倍。而且，淋巴系统恶性肿瘤和骨髓恶性肿瘤、急性白血病这两类，受辐射影响的风险程度差不多，每 100 毫希分别会额外增加 2.01 倍和 2.02 倍风险。</p>
+                <p style="text-indent: 2em;">做 CT 的次数越多，风险也越高，每多做一次 CT，患血液恶性肿瘤的整体风险就会增加 <strong>43%。</strong></p>
+                <p style="text-indent: 2em;">给大家举个更直观的例子：现在儿童做 CT 的平均辐射量是 8 毫希，按这个剂量算，每 1 万名儿童在之后 12 年里，大概会有 1-2 人因为这次 CT 的辐射患上血液恶性肿瘤。如果按每 100 毫希、每 10 万人随访一年来算，会额外多出现 17.7 例血液恶性肿瘤病例。</p>
+                
+                <h3><strong>研究的意义和对实际医疗的启发</strong></h3>
+                <p style="text-indent: 2em;">这项研究进一步证明了：即使是低于 100 毫希的低剂量辐射，也会增加患癌风险，<strong>这符合 “辐射剂量越高、风险越大，没有绝对安全阈值”</strong> 的医学模型。该研究的资深作者、巴塞罗那全球健康研究所的 Elisabeth Cardis 教授说：“我们的发现提醒大家，给孩子做 CT 必须更谨慎，能不做就不做，同时要尽量降低每次 CT 的辐射剂量。”</p>
+                <p style="text-indent: 2em;">目前医学界已经注意到这个问题，儿童 CT 的使用量已经趋于稳定甚至有所下降，辐射剂量也在不断优化。但这项研究的结果也呼吁全球更新放射防护的指导原则。未来还需要研究更智能的防护材料、更个性化的辐射剂量方案，进一步降低 CT 辐射带来的风险。</p>
+                <p style="text-indent: 2em;">这项研究于 2023 年 11 月 9 日在线发表。</p>
+                <p style="text-indent: 2em;">论文编号：DOI: 10.1038/s41591-023-02620-0）</p>
+        
+                <a href="#" class="text-blue-600 hover:underline font-semibold text-xl">返回科学新闻</a>
+            </div>
+        </section>
+        
+        <!-- Right Sidebar -->
+        <aside class="w-full lg:w-80 bg-gradient-to-r from-purple-50 to-white p-4 md:p-6 rounded-xl shadow-xl border-r-4 border-purple-500">
+            <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-4 uppercase tracking-wide">相关信息</h3>
+            <div class="space-y-4 md:space-y-6">
+                <!-- Related Topics -->
+                <div>
+                    <h4 class="text-lg md:text-xl font-medium text-gray-700 mb-2">热门话题</h4>
+                    <ul class="space-y-2">
+                        <li class="hover:bg-purple-50 transition duration-200 rounded">
+                            <a href="#" class="text-purple-600 hover:text-purple-700 text-base md:text-lg font-medium before:content-['▸'] before:mr-2">辐射防护技术</a>
+                        </li>
+                        <li class="hover:bg-purple-50 transition duration-200 rounded">
+                            <a href="#" class="text-purple-600 hover:text-purple-700 text-base md:text-lg font-medium before:content-['▸'] before:mr-2">环保材料趋势</a>
+                        </li>
+                        <li class="hover:bg-purple-50 transition duration-200 rounded">
+                            <a href="#" class="text-purple-600 hover:text-purple-700 text-base md:text-lg font-medium before:content-['▸'] before:mr-2">医疗安全指南</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Call to Action -->
+                <div>
+                    <h4 class="text-lg md:text-xl font-medium text-gray-700 mb-2">联系我们</h4>
+                    <p class="text-gray-600 text-sm md:text-base mb-3">了解更多关于我们的防护产品或定制解决方案。</p>
+                    <a href="#" class="inline-block bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">立即咨询</a>
+                </div>
+                <!-- WeChat QR Code -->
+                <div>
+                    <h4 class="text-lg md:text-xl font-medium text-gray-700 mb-2">微信联系方式</h4>
+                    <div class="flex flex-col items-center space-y-2">
+                        <img src="static/images/中辐.png" alt="WeChat QR Code" class="w-32 h-32 md:w-36 md:h-36 rounded-lg shadow-md">
+                        <p class="text-gray-600 text-sm md:text-base text-center">扫码添加微信，了解稳健医疗x湖北中辐联手研发无铅防护服详情</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</main>
+
+<style>
+    @media (max-width: 640px) {
+        .prose p, .prose ul, .prose li {
+            font-size: 1rem !important; /* 手机端字体调整为 text-base */
+        }
+        .prose h3 {
+            font-size: 1.25rem !important; /* 手机端子标题稍小 */
+        }
+        img {
+            height: 200px !important; /* 手机端图片高度适配 */
+        }
+    }
+</style>
+
+
+
+    <!-- Footer (Unchanged) -->
+    <footer class="bg-white shadow py-4 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-600">© 2025 湖北中辐新材料有限公司. 保留所有权利。</p>
+        </div>
+    </footer>
+    
+</body>
+</html>
